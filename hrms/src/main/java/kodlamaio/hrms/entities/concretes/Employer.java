@@ -26,32 +26,35 @@ import lombok.NoArgsConstructor;
 @Table(name = "employers")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
 @PrimaryKeyJoinColumn(name = "userId")
 
-public class Employer extends User{
-	
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
-	//@Column(name = "id")
-	//private int id;
-	//@Column(name = "user_id")
-	//private int userId;
-	
+public class Employer extends User {
+
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// @Column(name = "id")
+	// private int id;
+	// @Column(name = "user_id")
+	// private int userId;
+
 	@Column(name = "company_name")
 	private String companyName;
+
 	@Column(name = "phone_number")
 	private String phoneNumber;
+
 	@Column(name = "web_site_domain_name")
 	private String websitedomainName;
+
 	@Column(name = "is_verified", columnDefinition = "boolean default false")
 	private boolean isVerified = false;
 
-	//@ManyToOne
-	//@JoinColumn(name = "user_id")
-	//private User user;
-	
+	// @ManyToOne
+	// @JoinColumn(name = "user_id")
+	// private User user;
+
 	@OneToMany(mappedBy = "employer")
 	private List<JobAdvert> jobAdverts;
 

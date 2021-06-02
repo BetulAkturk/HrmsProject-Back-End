@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -22,32 +23,44 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="users")
+@Table(name = "users")
 @Inheritance(strategy = InheritanceType.JOINED)
-@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "systemWorkers", "jobseekers","employers" })
+@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "systemWorkers", "jobseekers", "employers" })
 public class User {
-	      @Id
-	      @GeneratedValue(strategy = GenerationType.IDENTITY)//id nin tek tek arttıgını belirtir
-	      
-	      @Column(name="id")
-          private int id;
-	      @Column(name="email_address")
-          private String emailAddress;
-	      @Column(name="password")
-          private String password;
-	      @Column(name="verify_code")
-          private String verifyCode;
-	      @Column(name="verified")
-          private boolean verified;
-	      
-	      //@OneToMany(mappedBy = "user")
-	      //private List<SystemWorker> systemWorkers;
-	      
-	      //@OneToMany(mappedBy = "user")
-	      //private List<Jobseeker>  jobseekers;
-	      
-	      //@OneToMany(mappedBy = "user")
-	      //private List<Employer>  employers;
-	      
-	      
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) // id nin tek tek arttıgını belirtir
+
+	@Column(name = "id")
+	private int id;
+
+	@Column(name = "email_address")
+	private String emailAddress;
+
+	@Column(name = "password")
+	private String password;
+
+	@Column(name = "verify_code")
+	private String verifyCode;
+
+	@Column(name = "verified")
+	private boolean verified;
+
+	@Column(name = "created_at", columnDefinition = "Date default CURRENT_DATE")
+	private LocalDate createdAt = LocalDate.now();
+
+	@Column(name = "is_active", columnDefinition = "boolean default true")
+	private boolean isActive = true;
+
+	@Column(name = "is_deleted", columnDefinition = "boolean default false")
+	private boolean isDeleted = false;
+
+	 //@OneToMany(mappedBy = "user")
+	// private List<SystemWorker> systemWorkers;
+
+	 //@OneToMany(mappedBy = "user")
+	 //private List<Jobseeker> jobseekers;
+
+	// @OneToMany(mappedBy = "user")
+	// private List<Employer> employers;
+
 }

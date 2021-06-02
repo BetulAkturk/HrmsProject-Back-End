@@ -32,6 +32,13 @@ public class City {
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "is_active", columnDefinition = "boolean default true")
+	private boolean isActive = true;
+
+	@Column(name = "is_deleted", columnDefinition = "boolean default false")
+	private boolean isDeleted = false;
+
 	@OneToMany(mappedBy = "city")
 	private List<JobAdvert> jobAdverts;
+
 }

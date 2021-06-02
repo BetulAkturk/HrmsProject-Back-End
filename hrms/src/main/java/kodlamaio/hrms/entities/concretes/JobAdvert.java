@@ -28,14 +28,14 @@ public class JobAdvert {
 	@Column(name = "id")
 	private int id;
 
-//	@Column(name = "type_of_work_id")
-//	private int typeOfWorkId;
+	// @Column(name = "type_of_work_id")
+	// private int typeOfWorkId;
 
-//	@Column(name = "employer_id")
-//	private int employerId;
+	// @Column(name = "employer_id")
+	// private int employerId;
 
-//	@Column(name = "city_id")
-//	private int cityId;
+	// @Column(name = "city_id")
+	// private int cityId;
 
 	@Column(name = "description")
 	private String description;
@@ -55,17 +55,17 @@ public class JobAdvert {
 	@Column(name = "published_at")
 	private LocalDate publishedAt;
 
-	@Column(name = "created_at")
-	private LocalDate createdAt;
-
 	@Column(name = "is_open")
 	private boolean isOpen;
 
-	@Column(name = "is_active")
-	private boolean isActive;
+	@Column(name = "created_at", columnDefinition = "Date default CURRENT_DATE")
+	private LocalDate createdAt = LocalDate.now();;
 
-	@Column(name = "is_deleted")
-	private boolean isDeleted;
+	@Column(name = "is_active", columnDefinition = "boolean default true")
+	private boolean isActive = true;
+
+	@Column(name = "is_deleted", columnDefinition = "boolean default false")
+	private boolean isDeleted = true;
 
 	@ManyToOne
 	@JoinColumn(name = "type_of_work_id")
