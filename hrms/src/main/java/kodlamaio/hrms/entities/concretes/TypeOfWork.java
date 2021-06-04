@@ -15,6 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -22,9 +23,10 @@ import lombok.NoArgsConstructor;
 @Table(name = "typeofworks")
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper=true)
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts", "jobseekers" })
 
-public class TypeOfWork {
+public class TypeOfWork extends Base{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,15 +39,7 @@ public class TypeOfWork {
 	@Column(name = "description")
 	private String description;
 
-	@Column(name = "created_at", columnDefinition = "Date default CURRENT_DATE")
-	private LocalDate createdDate = LocalDate.now();
-
-	@Column(name = "is_active", columnDefinition = "boolean default true")
-	private boolean isActive = true;
-
-	@Column(name = "is_deleted", columnDefinition = "boolean default false")
-	private boolean isDeleted = false;
-
+	
 	@OneToMany(mappedBy = "typeOfWork")
 	private List<Jobseeker> jobseekers;
 

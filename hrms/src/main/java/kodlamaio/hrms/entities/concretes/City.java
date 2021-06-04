@@ -13,6 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -21,8 +22,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Table(name = "cities")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
-
-public class City {
+@EqualsAndHashCode(callSuper=true)
+public class City extends Base{
 
 	@Id
 	@GeneratedValue

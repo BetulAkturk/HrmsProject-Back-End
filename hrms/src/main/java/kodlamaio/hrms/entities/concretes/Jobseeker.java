@@ -23,7 +23,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "jobseekers")
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 @PrimaryKeyJoinColumn(name = "user_id")
 
 public class Jobseeker extends User {
@@ -52,9 +52,7 @@ public class Jobseeker extends User {
 	@Column(name = "is_verified", columnDefinition = "boolean default false")
 	private boolean isVerified = false;
 
-	//@ManyToOne
-	//@JoinColumn(name = "user_id")
-	//private User user;
+	
 
 	@ManyToOne
 	@JoinColumn(name = "type_of_work_id")

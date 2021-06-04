@@ -13,6 +13,7 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -20,8 +21,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "jobadverts")
-
-public class JobAdvert {
+@EqualsAndHashCode(callSuper=true)
+public class JobAdvert extends Base {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
