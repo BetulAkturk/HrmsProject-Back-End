@@ -17,11 +17,11 @@ import kodlamaio.hrms.entities.concretes.Jobseeker;
 
 @RestController
 @RequestMapping("/api/jobseekers")
-public class JobSeekersController {
+public class JobseekersController {
      private JobseekerService jobSeekerService;
       
      @Autowired
-	public JobSeekersController(JobseekerService jobSeekerService) {
+	public JobseekersController(JobseekerService jobSeekerService) {
 		super();
 		this.jobSeekerService = jobSeekerService;
 	}

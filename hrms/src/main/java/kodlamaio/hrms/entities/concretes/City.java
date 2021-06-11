@@ -10,8 +10,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -19,7 +17,6 @@ import lombok.NoArgsConstructor;
 @Data
 @Entity
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "cities")
 @JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "jobAdverts" })
 @EqualsAndHashCode(callSuper=true)
@@ -33,13 +30,13 @@ public class City extends Base{
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "is_active", columnDefinition = "boolean default true")
-	private boolean isActive = true;
-
-	@Column(name = "is_deleted", columnDefinition = "boolean default false")
-	private boolean isDeleted = false;
-
 	@OneToMany(mappedBy = "city")
 	private List<JobAdvert> jobAdverts;
-
+	
+	public City(int id, String name, List<JobAdvert> jobAdverts) {
+		super();
+		this.name = name;
+		this.jobAdverts = jobAdverts;
+        this.id = id;
+}
 }
