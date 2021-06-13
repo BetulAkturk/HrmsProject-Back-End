@@ -37,5 +37,11 @@ public class JobseekerManager implements JobseekerService {
 		return new SuccessDataResult<Jobseeker>(this.JobseekerDao.getByNationalityId(nationalityId),
 				"İş arayan kimlik id'ye göre getirildi");
 	}
+	@Override
+	public DataResult<Jobseeker> getById(int id) {
+		
+		return new SuccessDataResult<Jobseeker>(this.JobseekerDao.getById(id));
+	
+	}
 
 }

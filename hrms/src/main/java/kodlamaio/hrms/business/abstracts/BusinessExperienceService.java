@@ -9,7 +9,12 @@ import kodlamaio.hrms.entities.concretes.BusinessExperience;
 public interface BusinessExperienceService {
 
 	DataResult<BusinessExperience> getById(int id);
+
+	DataResult<List<BusinessExperience>> getAll();
+
 	DataResult<List<BusinessExperience>> getAllByJobseeker_idOrderByEndAtDesc(int id);
-    Result add(BusinessExperience businessExperience);
+
+	Result add(BusinessExperience businessExperience);
+
 	DataResult<List<BusinessExperience>> getAllByJobseeker_id(int id);
 }

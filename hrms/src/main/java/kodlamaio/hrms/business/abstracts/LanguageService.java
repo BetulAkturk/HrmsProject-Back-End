@@ -10,6 +10,6 @@ import kodlamaio.hrms.entities.concretes.Language;
 
 public interface LanguageService {
 	 DataResult<Language> getById(int id);
-	 DataResult<List<Language>> getAllByJobseekerId(int id);
+	 DataResult<List<Language>> getAllByJobseeker_id(int id);
 	 Result add(Language language);
 }

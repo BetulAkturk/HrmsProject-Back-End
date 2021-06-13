@@ -11,29 +11,36 @@ import org.springframework.web.bind.annotation.RestController;
 import kodlamaio.hrms.business.abstracts.BusinessExperienceService;
 import kodlamaio.hrms.core.utilities.results.DataResult;
 import kodlamaio.hrms.entities.concretes.BusinessExperience;
+
 @RestController
 @RequestMapping("/api/BusinessExperiences/")
 public class BusinessExperiencesController {
-	
+
 	private BusinessExperienceService businessExperienceService;
-    @Autowired
+
+	@Autowired
 	public BusinessExperiencesController(BusinessExperienceService businessExperienceService) {
 		super();
 		this.businessExperienceService = businessExperienceService;
 	}
-	
-    @GetMapping("/getbyid")
-	public DataResult<BusinessExperience> getById(@RequestParam int id){
+
+	@GetMapping("/getbyid")
+	public DataResult<BusinessExperience> getById(@RequestParam int id) {
 		return this.businessExperienceService.getById(id);
 	}
-	
-    @GetMapping("/getAllByJobseekerIdOrderByEndAtDesc")
-    public DataResult<List<BusinessExperience>> getAllByJobseekerIdOrderByEndAtDesc(@RequestParam("id") int id){ 
-         return this.businessExperienceService.getAllByJobseeker_idOrderByEndAtDesc(id);
-    }    
-    
-    @GetMapping("/getAllByJobseekerId")
-    public DataResult<List<BusinessExperience>> getAllByJobseekerId(@RequestParam int id){
-         return this.businessExperienceService.getAllByJobseeker_id(id);
-    }
-    }
+
+	@GetMapping("/getAllByJobseeker_iddOrderByEndAtDesc")
+	public DataResult<List<BusinessExperience>> getAllByJobseeker_idOrderByEndAtDesc(@RequestParam int id) {
+		return this.businessExperienceService.getAllByJobseeker_idOrderByEndAtDesc(id);
+	}
+
+	@GetMapping("/getAllByJobseeker_id")
+	public DataResult<List<BusinessExperience>> getAllByJobseeker_id(@RequestParam int id) {
+		return this.businessExperienceService.getAllByJobseeker_id(id);
+	}
+
+	@GetMapping("/getAll")
+	public DataResult<List<BusinessExperience>> getAll() {
+		return this.businessExperienceService.getAll();
+	}
+}

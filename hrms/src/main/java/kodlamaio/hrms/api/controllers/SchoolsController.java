@@ -27,14 +27,14 @@ public class SchoolsController {
 		  return this.schoolService.getById(id);
 	  }
 	
-	@GetMapping("/getAllByJobseekerIdOrderByEndAtDesc")
-	     public DataResult<List<School>> getAllByJobseekerIdOrderByEndAtDesc(@RequestParam int id){
+	@GetMapping("/getAllByJobseeker_idOrderByEndAtDesc")
+	     public DataResult<List<School>> getAllByJobseeker_idOrderByEndAtDesc(@RequestParam int id){
 		   return this.schoolService.getAllByJobseekerIdOrderByEndAtDesc(id);
 	}
 	
-	@GetMapping("/getAllByJobseekerId")
-	     public DataResult<List<School>> getAllByJobseekerId(@RequestParam int id){
-		   return this.schoolService.getAllByJobseekerId(id);
+	@GetMapping("/getAllByJobseeker_id")
+	     public DataResult<List<School>> getAllByJobseeker_id(@RequestParam int id){
+		   return this.schoolService.getAllByJobseeker_id(id);
 	}
 	 
 

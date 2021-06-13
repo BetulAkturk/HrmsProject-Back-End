@@ -5,13 +5,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -62,7 +63,39 @@ public class Jobseeker extends User {
 	@JoinColumn(name = "type_of_work_id")
 	private TypeOfWork typeOfWork;
 
-	@JsonIgnore
+	
 	@OneToMany(mappedBy = "jobseeker")
+	@JsonIgnore
 	private List<School> schools;
+	
+	
+	@OneToMany(mappedBy = "jobseeker")
+	@JsonIgnore
+	private List<BusinessExperience> businessExperiences;
+	
+	
+	@OneToMany(mappedBy = "jobseeker")
+	@JsonIgnore
+	private List<Language> languages;
+	
+	
+	@OneToOne(mappedBy = "jobseeker",  optional=false, fetch=FetchType.LAZY)
+	@JsonIgnore
+	private Image  image;
+	
+	
+	@OneToMany(mappedBy = "jobseeker")
+	@JsonIgnore
+	private List<Link> links;
+	
+	
+	@OneToMany(mappedBy = "jobseeker")
+	@JsonIgnore
+	private List<ProgrammingSkill> programmingSkills;
+	
+	
+	@OneToMany(mappedBy = "jobseeker")
+	@JsonIgnore
+	private List<CoverLetter>  coverLetters;
+
 }
